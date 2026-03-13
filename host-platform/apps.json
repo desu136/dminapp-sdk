@@ -1,0 +1,12 @@
+[
+  {
+    "id": "demo-app",
+    "name": "Demo Mini App",
+    "path": "miniapps/demo-app/"
+  },
+  {
+    "id": "food-app",
+    "name": "Food App",
+    "path": "miniapps/food-app/"
+  }
+]
