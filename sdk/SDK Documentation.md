@@ -419,9 +419,21 @@ try {
 
 ---
 
-## Support & Maintenance
+## Support & Contact
 
-For issues regarding the SDK implementation or Host Bridge protocol, please contact the Platform Engineering Team.
+For questions, bug reports, or integration assistance regarding the MiniApp SDK, please reach out to the development team directly.
 
-**SDK Repository:** `git@repo:platform/miniapp-sdk.git`  
-**Issue Tracker:** `https://jira.internal/projects/MiniApp`
+📧 **Primary Contact:**  
+`ebisatesfaye30@gmail.com`
+`desukasaye19@gmail.com`
+
+📧 **Team Distribution List:**  
+`dexel202518@gmail.com`
+
+### What to Include in Your Message
+To help us resolve your issue faster, please provide:
+- SDK version you're using (`MiniApp.meta.sdkVersion`)
+- Host App environment (Web, iOS WebView, Android WebView, etc.)
+- Steps to reproduce the issue
+- Relevant error codes or logs
+- Mini App `appId` (if applicable)
