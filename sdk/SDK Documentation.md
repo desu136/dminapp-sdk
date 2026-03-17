@@ -21,6 +21,7 @@
    - [Security Considerations](#security-considerations)
 5. [Permissions System](#permissions-system)
 6. [Error Handling](#error-handling)
+7. [Support & Contact](#Support-Contact)
 
 ---
 
