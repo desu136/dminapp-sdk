@@ -1,5 +1,3 @@
-
-
 const MiniApp = {
 
   declaredPermissions: [],
@@ -392,8 +390,8 @@ const permissions = {
   request(scopes){
 
     return MiniApp.request("permissions.request",{ scopes });
-
-  }
+    
+  } 
 
 };
 

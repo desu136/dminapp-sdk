@@ -1,9 +1,0 @@
-{
-  "name": "food-app",
-  "version": "1.0.0",
-  "entry": "index.html",
-  "permissions": [
-    "auth"
-  ],
-  "author": "Developer"
-}
