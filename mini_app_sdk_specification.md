@@ -6,7 +6,325 @@ This document is a normative specification for a Mini-App platform consisting of
 - **Host App**: the native app (or web shell) that embeds Mini-Apps.
 - **Runtime**: the execution environment and sandbox for Mini-Apps.
 - **Bridge**: the request/response and event channel between Mini-App and Host.
-- **SDK**: the developer-facing API layered over the Bridge.
+- **SDK**: the developer Mini-App SDK Specification
+
+ 1. Overview
+
+The Mini-App SDK enables third-party developers to build lightweight
+applications (Mini-Apps) that run inside the host platform without
+requiring a full standalone installation.
+
+Goals: - Rapid Mini-App development - Secure access to platform
+services - Consistent user experience - Safe sandboxed execution
+
+Mini-Apps are loaded dynamically by the host application and run inside
+a secure runtime.
+
+------------------------------------------------------------------------
+
+ 2. Architecture
+
+Components: 1. Host Application 2. Mini-App Runtime 3. Mini-App SDK
+Bridge
+
+    Host App
+     ├─ Runtime Engine
+     ├─ SDK Bridge
+     └─ Mini-App Container
+            └─ Mini-App (HTML/JS/Flutter)
+
+------------------------------------------------------------------------
+
+ 3. Supported Platforms
+
+Platforms: - iOS - Android - Web (optional container)
+
+Languages: - JavaScript - TypeScript - Flutter
+
+------------------------------------------------------------------------
+
+ 4. Installation
+
+### JavaScript
+
+``` bash
+npm install miniapp-sdk
+```
+
+### Flutter
+
+``` bash
+flutter pub add miniapp_sdk
+```
+
+### Android
+
+``` gradle
+implementation 'com.platform:miniapp-sdk:1.0.0'
+```
+
+### iOS
+
+``` ruby
+pod 'MiniAppSDK'
+```
+
+------------------------------------------------------------------------
+
+ 5. Mini-App Lifecycle
+
+Lifecycle events:
+
+  Event      Description
+  ---------- ----------------
+  onLaunch   App opened
+  onShow     App visible
+  onHide     App background
+  onClose    App terminated
+
+Example:
+
+``` javascript
+MiniApp.onLaunch(() => {
+  console.log("Mini-App started");
+});
+```
+
+------------------------------------------------------------------------
+
+ 6. Authentication
+
+Mini-Apps authenticate via the host platform.
+
+``` javascript
+MiniApp.auth.login().then(user => {
+  console.log(user.id);
+});
+```
+
+Example response:
+
+``` json
+{
+  "id": "user_23492",
+  "name": "John Doe",
+  "token": "JWT_TOKEN"
+}
+```
+
+------------------------------------------------------------------------
+
+ 7. Payment API
+
+Mini-Apps can initiate payments.
+
+``` javascript
+MiniApp.pay({
+  amount: 50.00,
+  currency: "USD",
+  description: "Order #392"
+});
+```
+
+Response:
+
+``` json
+{
+  "status": "success",
+  "transaction_id": "TXN984392"
+}
+```
+
+------------------------------------------------------------------------
+
+ 8. Messaging API
+
+``` javascript
+MiniApp.notify({
+  title: "Order Update",
+  message: "Your order has shipped"
+});
+```
+
+------------------------------------------------------------------------
+
+ 9. Storage API
+
+  Method       Description
+  ------------ ---------------
+  setItem      Save data
+  getItem      Retrieve data
+  removeItem   Delete data
+
+Example:
+
+``` javascript
+MiniApp.storage.setItem("cart", cartData);
+```
+
+------------------------------------------------------------------------
+
+ 10. Device APIs
+
+Available APIs:
+
+-   Camera
+-   Location
+-   File Upload
+-   QR Scanner
+-   Clipboard
+
+Example:
+
+``` javascript
+MiniApp.camera.open().then(image => {
+  console.log(image.url);
+});
+```
+
+------------------------------------------------------------------------
+
+ 11. UI Components
+
+Provided components:
+
+-   Buttons
+-   Lists
+-   Forms
+-   Modals
+-   Navigation bars
+-   Payment widgets
+
+Example:
+
+``` javascript
+MiniApp.ui.showModal({
+  title: "Confirm",
+  content: "Proceed with payment?"
+});
+```
+
+------------------------------------------------------------------------
+
+ 12. Security Model
+
+Security features:
+
+-   Sandbox runtime
+-   Permission-based APIs
+-   Token authentication
+-   Encrypted communication
+-   Code validation
+
+Example permissions file:
+
+``` json
+{
+  "permissions": ["camera","location","payments"]
+}
+```
+
+------------------------------------------------------------------------
+
+ 13. Error Handling
+
+Example:
+
+``` json
+{
+  "error_code": "PAYMENT_FAILED",
+  "message": "Transaction declined"
+}
+```
+
+------------------------------------------------------------------------
+
+ 14. Mini-App Manifest
+
+Example `miniapp.json`
+
+``` json
+{
+  "name": "Food Delivery",
+  "version": "1.0.0",
+  "entry": "index.js",
+  "permissions": ["payments","location"],
+  "author": "Developer"
+}
+```
+
+------------------------------------------------------------------------
+
+ 15. Deployment
+
+Typical structure:
+
+    miniapp/
+     ├── index.js
+     ├── miniapp.json
+     ├── assets/
+     └── components/
+
+Deployment steps: 1. Package app 2. Upload build 3. Security review 4.
+Publish
+
+------------------------------------------------------------------------
+
+ 16. Versioning
+
+Semantic versioning:
+
+    MAJOR.MINOR.PATCH
+
+Example:
+
+    1.2.3
+
+------------------------------------------------------------------------
+
+ 17. Developer Tools
+
+Tools provided:
+
+-   Mini-App CLI
+-   Local simulator
+-   Debug console
+-   Performance monitor
+-   Publishing dashboard
+
+Example CLI:
+
+``` bash
+miniapp run
+```
+
+------------------------------------------------------------------------
+
+ 18. Best Practices
+
+-   Keep apps lightweight
+-   Cache frequently used data
+-   Optimize assets
+-   Handle offline states
+-   Secure API calls
+
+------------------------------------------------------------------------
+
+ 19. Support
+
+Support channels:
+
+-   Developer documentation
+-   Community forum
+-   GitHub issues
+-   Developer support email
+
+------------------------------------------------------------------------
+
+ 20. License
+
+Distributed under the platform developer license agreement.
+-facing API layered over the Bridge.
 
 Unless explicitly stated, the keywords **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, and **MAY** are to be interpreted as described in RFC 2119.
 
