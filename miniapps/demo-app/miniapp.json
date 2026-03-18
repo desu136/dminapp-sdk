@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1",
+  "appId": "com.example.demo",
+  "name": "Demo Mini App",
+  "version": "1.0.0",
+  "entry": "index.html",
+  "developer": {
+    "name": "Demo Developer"
+  },
+  "permissions": [
+    "auth.profile",
+    "auth.token",
+    "storage.kv",
+    "device.camera",
+    "device.location",
+    "device.scanner",
+    "device.file",
+    "payments.request"
+  ]
+}
